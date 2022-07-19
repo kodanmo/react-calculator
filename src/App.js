@@ -1,3 +1,4 @@
+import { isContentEditable } from '@testing-library/user-event/dist/utils';
 import React, { useState } from 'react'
 import './App.css'
 
@@ -6,9 +7,16 @@ function App() {
   const [num, setNum] = useState("")
   const [res, setRes] = useState("")
 
+  const op = ['+','-','*','/','.'];
+
 
   const up =(value)=>{
 
+    
+    if(op.includes(value)&&num==="" || op.includes(value)&&op.includes(num.slice(-1)))
+    {
+      return;
+    }
     setNum(num+value)
 
   }
