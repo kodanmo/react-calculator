@@ -3,12 +3,22 @@ import './App.css'
 
 function App() {
 
+  const [num, setNum] = useState("")
+  const [res, setRes] = useState("")
+
+
+  const up =(value)=>{
+
+    setNum(num+value)
+
+  }
+
 
   const cdigit =()=>{
      const digit = [];
      for(let i=1;i<10;i++)
      {
-      digit.push(<button>{i}</button>)
+      digit.push(<button onClick={()=>{up(i)}}>{i}</button>)
      }
      return digit;
   } 
@@ -20,22 +30,22 @@ function App() {
       <div className='calculator'>
 
         <div className='display'>
-          <span>(0)</span>0
+          <span>(0)</span>{num || '0'}
         </div> 
 
         <div className='operators'>
-            <button >+</button>
-            <button >-</button>
-            <button >*</button>
-            <button >/</button>
-            <button >DEL</button>
+            <button onClick={()=>{up('+')}}>+</button>
+            <button onClick={()=>{up('-')}}>-</button>
+            <button onClick={()=>{up('*')}}>*</button>
+            <button onClick={()=>{up('/')}}>/</button>
+            <button onClick={()=>{up('+')}}>DEL</button>
         </div>
 
         <div className='digits'>
              {cdigit()}
-             <button >0</button>
-             <button >=</button>
-             <button >.</button>
+             <button onClick={()=>{up('+')}}>0</button>
+             <button onClick={()=>{up('+')}}>=</button>
+             <button onClick={()=>{up('+')}}>.</button>
         </div> 
 
       </div>
