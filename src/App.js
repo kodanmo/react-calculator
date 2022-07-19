@@ -9,6 +9,11 @@ function App() {
 
   const op = ['+','-','*','/','.'];
 
+  const re =()=>{
+    
+    setNum(res)
+  }
+
 
   const up =(value)=>{
 
@@ -18,6 +23,7 @@ function App() {
       return;
     }
     setNum(num+value)
+    setRes(eval(num+value))
 
   }
 
@@ -38,7 +44,7 @@ function App() {
       <div className='calculator'>
 
         <div className='display'>
-          <span>(0)</span>{num || '0'}
+          {res?<span>({res})</span>:''} {num || '0'}
         </div> 
 
         <div className='operators'>
@@ -52,7 +58,7 @@ function App() {
         <div className='digits'>
              {cdigit()}
              <button onClick={()=>{up('+')}}>0</button>
-             <button onClick={()=>{up('+')}}>=</button>
+             <button onClick={()=>{re()}}>=</button>
              <button onClick={()=>{up('+')}}>.</button>
         </div> 
 
