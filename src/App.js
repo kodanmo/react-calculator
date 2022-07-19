@@ -1,5 +1,6 @@
 import { isContentEditable } from '@testing-library/user-event/dist/utils';
 import React, { useState } from 'react'
+import { renderIntoDocument } from 'react-dom/test-utils';
 import './App.css'
 
 function App() {
@@ -12,6 +13,13 @@ function App() {
   const re =()=>{
     
     setNum(res)
+  }
+
+  const de=()=>{
+    if(num==="") return;
+    const rum = num.slice(0,-1)
+    setNum(rum)
+
   }
 
 
@@ -52,7 +60,7 @@ function App() {
             <button onClick={()=>{up('-')}}>-</button>
             <button onClick={()=>{up('*')}}>*</button>
             <button onClick={()=>{up('/')}}>/</button>
-            <button onClick={()=>{up('+')}}>DEL</button>
+            <button onClick={()=>{de()}}>DEL</button>
         </div>
 
         <div className='digits'>
