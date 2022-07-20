@@ -11,12 +11,15 @@ function App() {
   const op = ['+','-','*','/','.'];
 
   const re =()=>{
-    
-    setNum(res)
+    setNum(eval(num).toString())
   }
 
   const de=()=>{
-    if(num==="") return;
+    if(num==="")
+    {
+      return;
+    }
+
     const rum = num.slice(0,-1)
     setNum(rum)
 
@@ -24,14 +27,13 @@ function App() {
 
 
   const up =(value)=>{
-
-    
-    if(op.includes(value)&&num==="" || op.includes(value)&&op.includes(num.slice(-1)))
+    if(op.includes(value) && num==="" || op.includes(value) && op.includes(num.slice(-1)))
     {
       return;
     }
     setNum(num+value)
-    setRes(eval(num+value))
+    if(!op.includes(value))
+    setRes(eval(num+value).toString())
 
   }
 
